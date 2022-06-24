@@ -1,0 +1,248 @@
+$secondary-color: #987147;
+
+@mixin boxSize($width, $height) {
+  width: #{$width};
+  height: #{$height};
+}
+
+@mixin position($display, $top: 0, $left: 0) {
+  position: #{$display};
+  top: #{$top};
+  left: #{$left};
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Khula", sans-serif;
+}
+
+svg {
+  fill: #fff;
+  stroke: #fff;
+}
+
+.svg-vault > svg {
+  width: 0;
+  height: 0;
+}
+
+nav {
+  @include position(absolute, 0, 0); /*Set last to -100vw*/
+  @include boxSize(80vw, 100vh);
+
+  background-color: black;
+  z-index: 1;
+  color: #fff;
+
+  .nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 8.4vh;
+
+    .close {
+      position: relative;
+      padding: 0 0.9rem 0.9rem 1rem;
+      margin: 1rem 0 1rem 1rem;
+    }
+
+    .line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1.9rem;
+      height: 0.3rem;
+      border-radius: 25rem;
+      background-color: white;
+    }
+
+    .line:first-of-type {
+      transform: rotate(45deg);
+    }
+
+    .line:last-of-type {
+      transform: rotate(-45deg);
+    }
+  }
+
+  .nav-container {
+    position: relative;
+    display: flex;
+
+    @include boxSize(100%, 5rem);
+
+    input {
+      display: none;
+    }
+
+    label {
+      transition: width 0.5s ease-in-out;
+      @include position(relative);
+      height: 10.5vh;
+      overflow: hidden;
+    }
+
+    label > .label-font {
+      position: absolute;
+      bottom: 0;
+      left: 1vw;
+    }
+
+    .womens-nav-img,
+    .mens-nav-img {
+      @include boxSize(300px, 100%);
+      transition: margin-left 0.5s ease-in-out;
+    }
+
+    .womens-nav-img {
+      margin-left: -10rem;
+    }
+    .mens-nav-img {
+      margin-left: -5rem;
+    }
+
+    input:checked + label {
+      width: 66.66%;
+    }
+
+    input:not(:checked) + label {
+      width: 33.33%;
+    }
+
+    .womens-nav:checked + label > img {
+      margin-left: -50px;
+    }
+
+    .mens-nav:not(:checked) + label > img {
+      margin-left: -10rem;
+    }
+
+    input:checked + label > .label-font {
+      font-weight: 800;
+    }
+
+    .nav-body {
+      /*Top set to 12vh as thats the height of our radio images  */
+      position: absolute;
+      top: 12vh;
+      left: 0;
+      width: 100%;
+      height: 79.2vh;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      padding: 0 1.5rem;
+      text-transform: uppercase;
+
+      a {
+        text-decoration: none;
+        color: #fff;
+        display: block; /*display block to force it to be clickable across how row.*/
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      svg:not(.home) {
+        position: absolute;
+        top: 16px;
+        right: 0;
+        width: 18px;
+        height: 10px;
+      }
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      div > ul > li {
+        position: relative;
+        border-bottom: 1px solid rgba($color: #fff, $alpha: 0.2);
+        padding: 1rem 0;
+      }
+
+      li > ul {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+      }
+
+      li:focus-within > ul {
+        max-height: 800px;
+        overflow: visible;
+      }
+
+      li:focus-within > svg {
+        transition: transform 0.5s ease-in-out;
+        transform: rotate(180deg);
+      }
+    }
+
+    .womens-nav-body,
+    .mens-nav-body {
+      position: absolute;
+      top: 0;
+      width: 90%;
+      transition: right 0.5s ease-in-out, left 0.5s ease-in-out;
+    }
+
+    .womens-nav-body {
+      right: -100vw;
+    }
+
+    .mens-nav-body {
+      left: -100%;
+    }
+
+    .womens-nav:checked ~ .nav-body > .womens-nav-body {
+      top: 0;
+      right: 5%;
+    }
+
+    .mens-nav:checked ~ .nav-body > .mens-nav-body {
+      top: 0;
+      left: 5%;
+    }
+
+    .womens-nav:checked ~ .nav-body > .womens-nav-body > ul {
+      display: block;
+    }
+
+    .womens-nav:checked ~ .nav-body > .mens-nav-body > ul {
+      display: none;
+    }
+
+    .womens-nav:not(:checked) ~ .nav-body > .womens-nav-body > ul {
+      display: none;
+    }
+  }
+
+  .nav-header-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    flex-grow: 1;
+    max-width: 15rem;
+
+    > svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+}
+
+.location-container {
+  display: none;
+}
