@@ -37,18 +37,27 @@ svg {
 }
 
 nav {
-  @include position(absolute, 0, 0); /*Set last to -100vw*/
-  @include boxSize(80vw, 100vh);
+  // @include position(absolute, 0, 0); /*Set last to -100vw*/
+  // @include boxSize(80vw, 100vh);
 
   background-color: black;
   z-index: 1;
   color: #fff;
 
+  .main-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80vw;
+    height: 100vh;
+    background-color: #000;
+  }
+
   .nav-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 8.4vh;
+    height: 6vh;
 
     .close {
       position: relative;
@@ -79,8 +88,6 @@ nav {
     position: relative;
     display: flex;
 
-    @include boxSize(100%, 5rem);
-
     input {
       display: none;
     }
@@ -88,7 +95,7 @@ nav {
     label {
       transition: width 0.5s ease-in-out;
       @include position(relative);
-      height: 10.5vh;
+      height: 7.9vh;
       overflow: hidden;
     }
 
@@ -100,7 +107,10 @@ nav {
 
     .womens-nav-img,
     .mens-nav-img {
-      @include boxSize(300px, 100%);
+      @include boxSize(
+        300px,
+        100%
+      ); /*? Increase width to 6--px and readjust margins when home. */
       transition: margin-left 0.5s ease-in-out;
     }
 
@@ -134,10 +144,10 @@ nav {
     .nav-body {
       /*Top set to 12vh as thats the height of our radio images  */
       position: absolute;
-      top: 12vh;
+      top: 8vh;
       left: 0;
       width: 100%;
-      height: 79.2vh;
+      height: calc(100vh - (6vh + 7.9vh));
       overflow-y: scroll;
       overflow-x: hidden;
       padding: 0 1.5rem;
@@ -147,6 +157,7 @@ nav {
         text-decoration: none;
         color: #fff;
         display: block; /*display block to force it to be clickable across how row.*/
+        width: 100%;
       }
 
       ul {
@@ -155,7 +166,7 @@ nav {
 
       svg:not(.home) {
         position: absolute;
-        top: 16px;
+        top: 2.3rem;
         right: 0;
         width: 18px;
         height: 10px;
@@ -170,6 +181,9 @@ nav {
         position: relative;
         border-bottom: 1px solid rgba($color: #fff, $alpha: 0.2);
         padding: 1rem 0;
+        height: 5.9rem;
+        display: flex;
+        align-items: center;
       }
 
       li > ul {
