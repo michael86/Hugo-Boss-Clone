@@ -1,7 +1,8 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 html {
@@ -18,35 +19,104 @@ svg {
   stroke: #fff;
 }
 
-.svg-vault > svg {
+.svg-vault,
+svg {
   width: 0;
   height: 0;
 }
 
-nav {
-  background-color: black;
-  z-index: 1;
-  color: #fff;
-}
-nav .main-nav {
+.banner {
   position: absolute;
   top: 0;
   left: 0;
+  text-align: center;
+  color: #fff;
+  width: 100vw;
+  background-color: #000;
+  height: 3.2rem;
+  padding: 5px;
+  overflow: hidden;
+}
+
+.banner > div {
+  -webkit-animation: banner 10s infinite;
+          animation: banner 10s infinite;
+}
+
+.banner a {
+  color: #fff;
+}
+
+header > picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+nav {
+  z-index: 1;
+  color: #fff;
+}
+
+nav .outer-nav-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 3.2rem 2rem 0 2rem;
+  height: 5.5rem;
+}
+
+nav .outer-nav-container .nav-toggle {
+  height: 1.5rem;
+  width: 2rem;
+}
+
+nav .outer-nav-container .shopping-bag {
+  height: 5.5rem;
+  width: 2rem;
+}
+
+nav .main-nav {
+  position: absolute;
+  top: 0;
+  left: -80vw;
   width: 80vw;
   height: 100vh;
   background-color: #000;
+  -webkit-transition: left 0.5s ease-in-out;
+  transition: left 0.5s ease-in-out;
 }
+
+nav .show-nav {
+  left: 0;
+}
+
 nav .nav-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 6vh;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 8.24vh;
 }
+
 nav .nav-header .close {
   position: relative;
   padding: 0 0.9rem 0.9rem 1rem;
   margin: 1rem 0 1rem 1rem;
 }
+
 nav .nav-header .line {
   position: absolute;
   top: 0;
@@ -56,72 +126,104 @@ nav .nav-header .line {
   border-radius: 25rem;
   background-color: white;
 }
+
 nav .nav-header .line:first-of-type {
-  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
+
 nav .nav-header .line:last-of-type {
-  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
+
 nav .nav-container {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 nav .nav-container input {
   display: none;
 }
+
 nav .nav-container label {
+  -webkit-transition: width 0.5s ease-in-out;
   transition: width 0.5s ease-in-out;
   position: relative;
   top: 0;
   left: 0;
-  height: 7.9vh;
+  height: 10.8vh;
   overflow: hidden;
+  /* background-size: contain; */
+  background-position: center;
 }
+
+nav .nav-container label:first-of-type {
+  background-image: url("./imgs/Nav-Menswear-800x200.jpg");
+}
+
+nav .nav-container label:last-of-type {
+  background-image: url("./imgs/Nav-Womenswear-800x200.jpg");
+}
+
 nav .nav-container label > .label-font {
   position: absolute;
   bottom: 0;
   left: 1vw;
 }
+
 nav .nav-container .womens-nav-img,
 nav .nav-container .mens-nav-img {
   width: 300px;
   height: 100%;
   /*? Increase width to 6--px and readjust margins when home. */
+  -webkit-transition: margin-left 0.5s ease-in-out;
   transition: margin-left 0.5s ease-in-out;
 }
+
 nav .nav-container .womens-nav-img {
   margin-left: -10rem;
 }
+
 nav .nav-container .mens-nav-img {
   margin-left: -5rem;
 }
+
 nav .nav-container input:checked + label {
   width: 66.66%;
 }
+
 nav .nav-container input:not(:checked) + label {
   width: 33.33%;
 }
+
 nav .nav-container .womens-nav:checked + label > img {
   margin-left: -50px;
 }
+
 nav .nav-container .mens-nav:not(:checked) + label > img {
   margin-left: -10rem;
 }
+
 nav .nav-container input:checked + label > .label-font {
   font-weight: 800;
 }
+
 nav .nav-container .nav-body {
   /*Top set to 12vh as thats the height of our radio images  */
   position: absolute;
-  top: 8vh;
+  top: 11vh;
   left: 0;
   width: 100%;
-  height: 86.1vh;
+  height: calc(100vh - (10.8vh + 8.24vh));
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 0 1.5rem;
   text-transform: uppercase;
 }
+
 nav .nav-container .nav-body a {
   text-decoration: none;
   color: #fff;
@@ -129,9 +231,11 @@ nav .nav-container .nav-body a {
   /*display block to force it to be clickable across how row.*/
   width: 100%;
 }
+
 nav .nav-container .nav-body ul {
   list-style: none;
 }
+
 nav .nav-container .nav-body svg:not(.home) {
   position: absolute;
   top: 2.3rem;
@@ -139,69 +243,96 @@ nav .nav-container .nav-body svg:not(.home) {
   width: 18px;
   height: 10px;
 }
+
 nav .nav-container .nav-body svg {
   width: 16px;
   height: 16px;
 }
+
 nav .nav-container .nav-body div > ul > li {
   position: relative;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding: 1rem 0;
-  height: 5.9rem;
-  display: flex;
-  align-items: center;
 }
+
 nav .nav-container .nav-body li > ul {
   max-height: 0;
   overflow: hidden;
+  -webkit-transition: max-height 0.5s ease-in-out;
   transition: max-height 0.5s ease-in-out;
 }
+
 nav .nav-container .nav-body li:focus-within > ul {
   max-height: 800px;
   overflow: visible;
 }
+
 nav .nav-container .nav-body li:focus-within > svg {
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  transition: -webkit-transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out;
-  transform: rotate(180deg);
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
+
 nav .nav-container .womens-nav-body,
 nav .nav-container .mens-nav-body {
   position: absolute;
   top: 0;
   width: 90%;
+  -webkit-transition: right 0.5s ease-in-out, left 0.5s ease-in-out;
   transition: right 0.5s ease-in-out, left 0.5s ease-in-out;
 }
+
 nav .nav-container .womens-nav-body {
   right: -100vw;
 }
+
 nav .nav-container .mens-nav-body {
   left: -100%;
 }
+
 nav .nav-container .womens-nav:checked ~ .nav-body > .womens-nav-body {
   top: 0;
   right: 5%;
 }
+
 nav .nav-container .mens-nav:checked ~ .nav-body > .mens-nav-body {
   top: 0;
   left: 5%;
 }
+
 nav .nav-container .womens-nav:checked ~ .nav-body > .womens-nav-body > ul {
   display: block;
 }
+
 nav .nav-container .womens-nav:checked ~ .nav-body > .mens-nav-body > ul {
   display: none;
 }
+
 nav .nav-container .womens-nav:not(:checked) ~ .nav-body > .womens-nav-body > ul {
   display: none;
 }
+
 nav .nav-header-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 1rem;
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   max-width: 15rem;
 }
+
 nav .nav-header-right > svg {
   width: 2rem;
   height: 2rem;
@@ -209,4 +340,51 @@ nav .nav-header-right > svg {
 
 .location-container {
   display: none;
-}/*# sourceMappingURL=style.css.map */
+}
+
+@-webkit-keyframes banner {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  40% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  50% {
+    -webkit-transform: translateY(-27px);
+            transform: translateY(-27px);
+  }
+  90% {
+    -webkit-transform: translateY(-27px);
+            transform: translateY(-27px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+@keyframes banner {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  40% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  50% {
+    -webkit-transform: translateY(-27px);
+            transform: translateY(-27px);
+  }
+  90% {
+    -webkit-transform: translateY(-27px);
+            transform: translateY(-27px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+/*# sourceMappingURL=style.css.map */

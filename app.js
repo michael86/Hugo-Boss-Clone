@@ -1,12 +1,7 @@
-// const mensNav = document.getElementById('mens-nav');
-// const womensNav = document.getElementById('womens-nav');
+const navToggle = document.getElementById('nav-toggle');
+const nav = document.getElementById('main-nav');
+const closeNav = document.getElementById('close-nav');
 
-// womensNav.addEventListener('click', e => {
-//     mensNav.style.gridColumn = "1 / span 1";
-//     womensNav.style.gridColumn = "2 / span 2";
-// })
+navToggle.addEventListener('click', () => nav.classList.add('show-nav'));
+closeNav.addEventListener('click', () => nav.classList.remove('show-nav'));
 
-// mensNav.addEventListener('click', e => {
-//     womensNav.style.gridColumn = "3";
-//     mensNav.style.gridColumn = "1 / span 2";
-// })

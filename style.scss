@@ -31,33 +31,86 @@ svg {
   stroke: #fff;
 }
 
-.svg-vault > svg {
+.svg-vault,
+svg {
   width: 0;
   height: 0;
+}
+
+.banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  color: #fff;
+  width: 100vw;
+  background-color: #000;
+  height: 3.2rem;
+  padding: 5px;
+  overflow: hidden;
+
+  > div {
+    animation: banner 10s infinite;
+  }
+
+  a {
+    color: #fff;
+  }
+}
+
+header {
+  > picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
 }
 
 nav {
   // @include position(absolute, 0, 0); /*Set last to -100vw*/
   // @include boxSize(80vw, 100vh);
 
-  background-color: black;
   z-index: 1;
   color: #fff;
+
+  .outer-nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3.2rem 2rem 0 2rem;
+    height: 5.5rem;
+
+    .nav-toggle {
+      height: 1.5rem;
+      width: 2rem;
+    }
+
+    .shopping-bag {
+      height: 5.5rem;
+      width: 2rem;
+    }
+  }
 
   .main-nav {
     position: absolute;
     top: 0;
-    left: 0;
+    left: -80vw;
     width: 80vw;
     height: 100vh;
     background-color: #000;
+    transition: left 0.5s ease-in-out;
+  }
+
+  .show-nav {
+    left: 0;
   }
 
   .nav-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 6vh;
+    height: 8.24vh;
 
     .close {
       position: relative;
@@ -95,8 +148,18 @@ nav {
     label {
       transition: width 0.5s ease-in-out;
       @include position(relative);
-      height: 7.9vh;
+      height: 10.8vh;
       overflow: hidden;
+      /* background-size: contain; */
+      background-position: center;
+    }
+
+    label:first-of-type {
+      background-image: url("./imgs/Nav-Menswear-800x200.jpg");
+    }
+
+    label:last-of-type {
+      background-image: url("./imgs/Nav-Womenswear-800x200.jpg");
     }
 
     label > .label-font {
@@ -144,10 +207,10 @@ nav {
     .nav-body {
       /*Top set to 12vh as thats the height of our radio images  */
       position: absolute;
-      top: 8vh;
+      top: 11vh;
       left: 0;
       width: 100%;
-      height: calc(100vh - (6vh + 7.9vh));
+      height: calc(100vh - (10.8vh + 8.24vh));
       overflow-y: scroll;
       overflow-x: hidden;
       padding: 0 1.5rem;
@@ -181,9 +244,6 @@ nav {
         position: relative;
         border-bottom: 1px solid rgba($color: #fff, $alpha: 0.2);
         padding: 1rem 0;
-        height: 5.9rem;
-        display: flex;
-        align-items: center;
       }
 
       li > ul {
@@ -259,4 +319,26 @@ nav {
 
 .location-container {
   display: none;
+}
+
+@keyframes banner {
+  0% {
+    transform: translateY(0px);
+  }
+
+  40% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-27px);
+  }
+
+  90% {
+    transform: translateY(-27px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
