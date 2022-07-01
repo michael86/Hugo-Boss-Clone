@@ -58,15 +58,6 @@ svg {
   }
 }
 
-header {
-  > picture {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
-}
-
 nav {
   // @include position(absolute, 0, 0); /*Set last to -100vw*/
   // @include boxSize(80vw, 100vh);
@@ -100,6 +91,7 @@ nav {
     height: 100vh;
     background-color: #000;
     transition: left 0.5s ease-in-out;
+    z-index: 1;
   }
 
   .show-nav {
@@ -170,10 +162,7 @@ nav {
 
     .womens-nav-img,
     .mens-nav-img {
-      @include boxSize(
-        300px,
-        100%
-      ); /*? Increase width to 6--px and readjust margins when home. */
+      @include boxSize(300px, 100%);
       transition: margin-left 0.5s ease-in-out;
     }
 
@@ -272,11 +261,11 @@ nav {
     }
 
     .womens-nav-body {
-      right: -100vw;
+      right: -90%;
     }
 
     .mens-nav-body {
-      left: -100%;
+      left: -90%;
     }
 
     .womens-nav:checked ~ .nav-body > .womens-nav-body {
@@ -294,11 +283,11 @@ nav {
     }
 
     .womens-nav:checked ~ .nav-body > .mens-nav-body > ul {
-      display: none;
+      overflow: hidden;
     }
 
     .womens-nav:not(:checked) ~ .nav-body > .womens-nav-body > ul {
-      display: none;
+      overflow: hidden;
     }
   }
 
@@ -313,6 +302,155 @@ nav {
     > svg {
       width: 2rem;
       height: 2rem;
+    }
+  }
+}
+
+picture img {
+  width: 100%;
+}
+
+main {
+  .landing {
+    > picture {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .container {
+      margin: 0.9rem auto 0 auto;
+      width: 90%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .search-container {
+      width: 100%;
+      position: relative;
+
+      .search-icon {
+        position: absolute;
+        top: 1.3rem;
+        right: 1.2rem;
+        stroke: #fff;
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    input[type="search"] {
+      background-color: #ffffff1a;
+      opacity: 0.9;
+      border: 1px solid white;
+      width: 100%;
+      height: 4.8rem;
+      padding: 2rem 1.5rem;
+      color: #fff;
+    }
+
+    .sale-promo {
+      text-align: center;
+      color: #fff;
+      margin-top: 1rem;
+
+      h2 {
+        padding: 0;
+        margin: 2rem 0 0 0;
+        text-transform: uppercase;
+        font-size: 4.3rem;
+        line-height: 2rem;
+        font-weight: 800;
+      }
+
+      p {
+        font-weight: 800;
+        margin-bottom: 2rem;
+      }
+
+      ~ button {
+        font-size: 1.6rem;
+        font-weight: 600;
+        padding: 1rem 0.7rem 0.75rem 0.75rem;
+        text-transform: uppercase;
+        border: none;
+      }
+
+      + button {
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+
+  .welcome {
+    position: relative;
+    top: 12rem;
+    left: 0;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60rem;
+
+    > picture {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: -1;
+    }
+
+    h2 {
+      font-size: 4.2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .welcome-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 72%;
+    }
+
+    .welcome-buttons button {
+      font-size: 1.6rem;
+      font-weight: 600;
+      padding: 1rem 0.7rem 0.75rem 0.75rem;
+      text-transform: uppercase;
+      border: none;
+    }
+  }
+
+  .about-section {
+    position: relative;
+    top: 12rem;
+    left: 0;
+
+    .header-container {
+      background-color: #eee;
+      padding: 2rem;
+      text-transform: uppercase;
+      line-height: 3rem;
+
+      h2 {
+        font-weight: 800;
+      }
+    }
+
+    .about-container {
+      width: 80%;
+      margin: auto;
+      margin-top: 3rem;
+      font-weight: 100;
+
+      a {
+        color: #000;
+        font-weight: 700;
+      }
     }
   }
 }
