@@ -47,6 +47,12 @@ svg {
   color: #fff;
 }
 
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
 nav {
   z-index: 1;
   color: #fff;
@@ -333,6 +339,20 @@ nav .nav-header-right > svg {
 
 picture img {
   width: 100%;
+  height: auto;
+}
+
+main .landing {
+  background-image: url("https://images.hugoboss.com/is/image/hugobossdm/2022-05-12_Headteaser10?%24large%24&amp;fmt=png-alpha&amp;align=0,-1&amp;fit=crop,1&amp;ts=1656059297397&amp;wid=2048&amp;hei=693");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  padding-top: 8rem;
+  height: 46rem;
 }
 
 main .landing > picture {
@@ -415,7 +435,7 @@ main .landing .sale-promo + button {
 
 main .welcome {
   position: relative;
-  top: 12rem;
+  top: 2rem;
   left: 0;
   color: #fff;
   display: -webkit-box;
@@ -472,7 +492,7 @@ main .welcome .welcome-buttons button {
 
 main .about-section {
   position: relative;
-  top: 12rem;
+  top: 0;
   left: 0;
 }
 
@@ -497,6 +517,162 @@ main .about-section .about-container {
 main .about-section .about-container a {
   color: #000;
   font-weight: 700;
+}
+
+main .offer-container {
+  background-color: #eee;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+main .offer-container img {
+  width: 100%;
+}
+
+main .offer-container div {
+  background-color: #fff;
+}
+
+main .offer-container h3 {
+  font-weight: 800;
+  font-size: 2.5rem;
+}
+
+main .offer-container p {
+  margin-bottom: 2rem;
+}
+
+main .offer-container button {
+  background-color: #000;
+  padding: 1.5rem 0;
+  width: 80%;
+  border: none;
+  color: #eee;
+  margin-bottom: 2rem;
+}
+
+footer {
+  background-color: #f6f6f6;
+}
+
+footer input {
+  display: none;
+}
+
+footer ul li {
+  color: #000;
+}
+
+footer nav {
+  padding: 2rem 1rem;
+}
+
+footer nav > ul > li {
+  padding: 1rem 0;
+  border-bottom: 1px solid black;
+}
+
+footer nav > ul > li > ul {
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 0.5s ease-in-out;
+  transition: max-height 0.5s ease-in-out;
+}
+
+footer nav > ul > li input:checked + ul {
+  max-height: 500px;
+}
+
+footer .socials-container {
+  text-align: center;
+}
+
+footer .socials-container .social-icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer .socials-container .icon {
+  background-color: black;
+  width: 24px;
+  height: 24px;
+  margin-right: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer .socials-container svg {
+  width: 16px;
+  height: 16px;
+  stroke: #fff;
+}
+
+footer .app-icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer .apple-app,
+footer .google-app {
+  width: 12rem;
+  height: 4rem;
+  background-image: url("./imgs/appstore-icons.png");
+  background-size: cover;
+  margin: 1rem 1.5rem 0 0;
+}
+
+footer .apple-app {
+  background-position: 0 40px;
+}
+
+footer .google-app {
+  background-position: 0 -5px;
+}
+
+footer .location-nav {
+  text-align: center;
+  margin-top: 2rem;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  text-transform: uppercase;
+  margin-bottom: 5rem;
+}
+
+footer .smallprint-container {
+  background-color: #f0f0f0;
+  text-align: center;
+  font-weight: 700;
+  padding-top: 2rem;
+}
+
+footer .small-print {
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 3rem 0;
 }
 
 .location-container {
