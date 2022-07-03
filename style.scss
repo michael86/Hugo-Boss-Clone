@@ -309,6 +309,10 @@ nav {
   }
 }
 
+nav.scroll {
+  background-color: #000;
+}
+
 picture img {
   width: 100%;
   height: auto;
@@ -335,7 +339,7 @@ main {
     }
 
     .container {
-      margin: 0.9rem auto 0 auto;
+      margin: 1.5rem auto 0 auto;
       width: 90%;
       display: flex;
       align-items: center;
@@ -369,9 +373,9 @@ main {
     .sale-promo {
       text-align: center;
       color: #fff;
-      margin-top: 1rem;
+      margin-top: 0.6rem;
 
-      h2 {
+      h1 {
         padding: 0;
         margin: 2rem 0 0 0;
         text-transform: uppercase;
@@ -382,13 +386,18 @@ main {
 
       p {
         font-weight: 800;
-        margin-bottom: 2rem;
+        margin: 0.5rem 0 2rem 0;
+      }
+
+      + button {
+        margin-top: 1rem;
       }
 
       ~ button {
         font-size: 1.6rem;
         font-weight: 600;
-        padding: 1rem 0.7rem 0.75rem 0.75rem;
+        letter-spacing: 0.2rem;
+        padding: 0.8rem 2rem;
         text-transform: uppercase;
         border: none;
       }
@@ -415,7 +424,14 @@ main {
       top: 0;
       left: 0;
       width: 100%;
+      height: 100%;
       z-index: -1;
+
+      source,
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
 
     h2 {
@@ -442,7 +458,7 @@ main {
 
   .about-section {
     position: relative;
-    top: 0;
+    top: 2rem;
     left: 0;
 
     .header-container {
@@ -473,6 +489,7 @@ main {
     background-color: #eee;
     padding-top: 2rem;
     text-align: center;
+    margin-top: 2rem;
 
     img {
       width: 100%;
@@ -515,15 +532,24 @@ footer {
 
   nav {
     padding: 2rem 1rem;
+    transition: background-color 0.5s ease-in-out;
 
     > ul > li {
       padding: 1rem 0;
       border-bottom: 1px solid black;
+      list-style: none;
+      font-weight: 600;
+      text-transform: uppercase;
 
       > ul {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.5s ease-in-out;
+      }
+
+      label {
+        display: inline-block;
+        width: 100%;
       }
 
       input:checked + ul {
