@@ -327,7 +327,6 @@ main {
     position: relative;
     top: 0;
     left: 0;
-    z-index: -1;
     padding-top: 8rem;
     height: 46rem;
 
@@ -388,23 +387,27 @@ main {
         font-weight: 800;
         margin: 0.5rem 0 2rem 0;
       }
+    }
+  }
 
-      + button {
-        margin-top: 1rem;
-      }
+  .sale-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 
-      ~ button {
-        font-size: 1.6rem;
-        font-weight: 600;
-        letter-spacing: 0.2rem;
-        padding: 0.8rem 2rem;
-        text-transform: uppercase;
-        border: none;
-      }
+    > button {
+      margin-top: 1rem;
+    }
 
-      + button {
-        margin-bottom: 1.5rem;
-      }
+    button {
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: 0.2rem;
+      padding: 0.8rem 2rem;
+      width: fit-content;
+      text-transform: uppercase;
+      border: none;
     }
   }
 
@@ -434,6 +437,11 @@ main {
       }
     }
 
+    > div {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
     h2 {
       font-size: 4.2rem;
       font-weight: 800;
@@ -444,13 +452,15 @@ main {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      width: 72%;
+      width: 100%;
+      margin-top: 1.5rem;
     }
 
     .welcome-buttons button {
       font-size: 1.6rem;
       font-weight: 600;
       padding: 1rem 0.7rem 0.75rem 0.75rem;
+      margin: 0 1.5rem;
       text-transform: uppercase;
       border: none;
     }
@@ -515,6 +525,7 @@ main {
       border: none;
       color: #eee;
       margin-bottom: 2rem;
+      text-transform: uppercase;
     }
   }
 }
@@ -545,15 +556,86 @@ footer {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.5s ease-in-out;
+
+        li > div {
+          padding: 3rem 3rem 1rem 3rem;
+
+          .title {
+            color: #666;
+            font-weight: 100;
+            margin-bottom: 5rem;
+          }
+
+          p svg {
+            width: 16px;
+            height: 16px;
+            fill: #000;
+          }
+        }
       }
 
       label {
         display: inline-block;
         width: 100%;
+        position: relative;
+
+        > svg {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 14px;
+          height: 14px;
+          stroke: #000;
+          fill: #000;
+          stroke-width: 1px;
+          transform: rotate(90deg);
+          transition: transform 0.5s ease-in-out;
+        }
       }
 
-      input:checked + ul {
+      input:checked ~ ul {
         max-height: 500px;
+      }
+
+      input:checked + label > svg {
+        transform: rotate(270deg);
+      }
+    }
+
+    .contact {
+      .contact-group {
+        padding: 1rem 3rem;
+        font-weight: 100;
+      }
+    }
+
+    .services {
+      li {
+        padding: 1rem 3rem;
+        font-weight: 100;
+
+        svg {
+          width: 14px;
+          height: 14px;
+          stroke: #000;
+          fill: #000;
+          stroke-width: 1px;
+        }
+      }
+    }
+
+    .company {
+      li {
+        padding: 1rem 3rem;
+        font-weight: 100;
+
+        svg {
+          width: 14px;
+          height: 14px;
+          stroke: #000;
+          fill: #000;
+          stroke-width: 1px;
+        }
       }
     }
   }
@@ -654,5 +736,45 @@ footer {
 
   100% {
     transform: translateY(0px);
+  }
+}
+
+@media screen and (min-width: "460px") {
+  main {
+    .sale-buttons {
+      flex-direction: row;
+      justify-content: center;
+
+      button {
+        margin: 0 1.5rem;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 512px) {
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 0;
+    font-size: 1.3rem;
+
+    .img-container {
+      margin-right: 1.5rem;
+      min-width: 50%;
+      width: 50%;
+
+      picture img,
+      picture source {
+        width: 100%;
+      }
+    }
+
+    p {
+      margin-right: 2rem;
+    }
   }
 }
