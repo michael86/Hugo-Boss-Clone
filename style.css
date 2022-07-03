@@ -77,9 +77,18 @@ nav .outer-nav-container .nav-toggle {
   width: 2rem;
 }
 
+nav .outer-nav-container .site-title {
+  text-transform: uppercase;
+  padding-top: 1rem;
+}
+
 nav .outer-nav-container .shopping-bag {
   height: 5.5rem;
   width: 2rem;
+}
+
+nav .outer-nav-container .search-container {
+  display: none;
 }
 
 nav .main-nav {
@@ -529,24 +538,26 @@ main .about-section {
   position: relative;
   top: 2rem;
   left: 0;
+  background-color: #eee;
 }
 
 main .about-section .header-container {
-  background-color: #eee;
   padding: 2rem;
   text-transform: uppercase;
   line-height: 3rem;
 }
 
 main .about-section .header-container h2 {
+  font-size: 3rem;
   font-weight: 800;
 }
 
 main .about-section .about-container {
-  width: 80%;
-  margin: auto;
+  width: 100%;
   margin-top: 3rem;
   font-weight: 100;
+  background-color: #fff;
+  padding: 2.5rem 5rem;
 }
 
 main .about-section .about-container a {
@@ -885,6 +896,108 @@ footer .small-print {
   }
   .flex-container p {
     margin-right: 2rem;
+  }
+}
+
+@media screen and (min-width: 765px) {
+  nav .outer-nav-container .site-title {
+    margin-left: 1.5rem;
+  }
+  nav .outer-nav-container .search-container {
+    display: initial;
+    position: relative;
+    margin: 0 1.5rem 0 auto;
+  }
+  nav .outer-nav-container .search-container .search-icon {
+    position: absolute;
+    top: 1.3rem;
+    right: 1.2rem;
+    stroke: #fff;
+    width: 2rem;
+    height: 2rem;
+  }
+  nav .outer-nav-container input[type="search"] {
+    display: initial;
+    background-color: #ffffff1a;
+    border: none;
+    width: 200px;
+    height: 36px;
+    padding: 2rem 1.5rem;
+    color: #fff;
+  }
+  .landing input[type="search"] {
+    display: none;
+  }
+  .landing svg {
+    display: none;
+  }
+  main .about-section .header-container {
+    width: 95%;
+    margin: auto;
+  }
+  main .about-section .about-container {
+    width: 90%;
+    margin: auto;
+  }
+  footer nav > ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  footer nav > ul .card {
+    min-height: 450px;
+  }
+  footer nav > ul > li {
+    max-width: 300px;
+    border: none;
+    margin: 0 0.3rem 10rem 0.3rem;
+    height: 225px;
+  }
+  footer nav > ul li > ul {
+    list-style: none;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    overflow: visible;
+  }
+  footer nav > ul li > ul > li {
+    position: relative;
+  }
+  footer nav > ul li > ul .flex-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  footer nav > ul li > ul .flex-container .img-container {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  footer nav > ul li > ul .flex-container .title {
+    font-size: 1.6rem;
+  }
+  footer nav > ul li > ul .align-self {
+    position: absolute;
+    bottom: 0;
+  }
+  footer nav > ul svg:first-of-type {
+    display: none;
+  }
+  footer nav > ul .contact .contact-group {
+    padding: 0;
+  }
+  footer nav > ul .services li,
+  footer nav > ul .company li {
+    padding: 0;
   }
 }
 /*# sourceMappingURL=style.css.map */

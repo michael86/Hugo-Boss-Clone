@@ -1774,9 +1774,7 @@
   </div>
 
   <header>
-    <!-- Stolen the below directly from the site as they had multiple sizes of the main image. Saved having to download
-        the whole lot. However, I understand what is happeing. The source is loaded upon hitting the relevant max-width
-        in the media attribute. Alternatively if no source matches, the img tag is loaded instead.-->
+
 
     <!-- <div class="location-nav">
             <div class="location-container">
@@ -1840,10 +1838,21 @@
           <h1>hugo boss</h1>
         </div>
 
+        <div class="search-container">
+
+          <input type="search" name="search" id="search-desktop" value="Search Men's" />
+          <svg class="search-icon">
+            <use xlink:href="#icon_search"></use>
+          </svg>
+
+        </div>
+
         <svg class="shopping-bag">
           <title>Shopping Bag</title>
           <use xlink:href="#icon_shopping_bag"></use>
         </svg>
+
+
       </div>
 
       <div class="main-nav" id="main-nav">
@@ -2391,7 +2400,7 @@
 
       <ul>
 
-        <li class="sale">
+        <li class="sale card">
 
           <input type="checkbox" name="footer-nav" id="sale" />
 
@@ -2450,7 +2459,7 @@
                 </div>
 
               </div>
-              <p>
+              <p class="align-self">
                 <span>
                   <svg>
                     <use xlink:href="#icon_arrow_to_right"></use>
@@ -2463,7 +2472,7 @@
 
         </li>
 
-        <li class="podcast">
+        <li class="podcast card">
           <input type="checkbox" name="footer-nav" id="podcast" />
 
           <label for="podcast"> a new podcast
@@ -2525,7 +2534,7 @@
 
               </div>
 
-              <p>
+              <p class="align-self">
                 <span>
                   <svg>
                     <use xlink:href="#icon_arrow_to_right"></use>

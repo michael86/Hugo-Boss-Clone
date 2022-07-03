@@ -80,9 +80,18 @@ nav {
       width: 2rem;
     }
 
+    .site-title {
+      text-transform: uppercase;
+      padding-top: 1rem;
+    }
+
     .shopping-bag {
       height: 5.5rem;
       width: 2rem;
+    }
+
+    .search-container {
+      display: none;
     }
   }
 
@@ -470,23 +479,25 @@ main {
     position: relative;
     top: 2rem;
     left: 0;
+    background-color: #eee;
 
     .header-container {
-      background-color: #eee;
       padding: 2rem;
       text-transform: uppercase;
       line-height: 3rem;
 
       h2 {
+        font-size: 3rem;
         font-weight: 800;
       }
     }
 
     .about-container {
-      width: 80%;
-      margin: auto;
+      width: 100%;
       margin-top: 3rem;
       font-weight: 100;
+      background-color: #fff;
+      padding: 2.5rem 5rem;
 
       a {
         color: #000;
@@ -775,6 +786,128 @@ footer {
 
     p {
       margin-right: 2rem;
+    }
+  }
+}
+
+@media screen and (min-width: 765px) {
+  nav {
+    .outer-nav-container {
+      .site-title {
+        margin-left: 1.5rem;
+      }
+
+      .search-container {
+        display: initial;
+        position: relative;
+        margin: 0 1.5rem 0 auto;
+
+        .search-icon {
+          position: absolute;
+          top: 1.3rem;
+          right: 1.2rem;
+          stroke: #fff;
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+
+      input[type="search"] {
+        display: initial;
+        background-color: #ffffff1a;
+        border: none;
+        width: 200px;
+        height: 36px;
+        padding: 2rem 1.5rem;
+        color: #fff;
+      }
+    }
+  }
+
+  .landing {
+    input[type="search"] {
+      display: none;
+    }
+
+    svg {
+      display: none;
+    }
+  }
+
+  main {
+    .about-section {
+      .header-container {
+        width: 95%;
+        margin: auto;
+      }
+
+      .about-container {
+        width: 90%;
+        margin: auto;
+      }
+    }
+  }
+
+  footer {
+    nav {
+      > ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .card {
+          min-height: 450px;
+        }
+
+        > li {
+          max-width: 300px;
+          border: none;
+          margin: 0 0.3rem 10rem 0.3rem;
+          height: 225px;
+        }
+
+        li > ul {
+          list-style: none;
+          justify-content: flex-start;
+          overflow: visible;
+
+          > li {
+            position: relative;
+          }
+
+          .flex-container {
+            flex-direction: column;
+
+            .img-container {
+              width: 100%;
+              margin-bottom: 2rem;
+            }
+
+            .title {
+              font-size: 1.6rem;
+            }
+          }
+
+          .align-self {
+            position: absolute;
+            bottom: 0;
+          }
+        }
+
+        svg:first-of-type {
+          display: none;
+        }
+
+        .contact .contact-group {
+          padding: 0;
+        }
+
+        .services li,
+        .company li {
+          padding: 0;
+        }
+      }
     }
   }
 }
