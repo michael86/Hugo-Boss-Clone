@@ -1,5 +1,3 @@
-$secondary-color: #987147;
-
 @mixin boxSize($width, $height) {
   width: #{$width};
   height: #{$height};
@@ -11,9 +9,42 @@ $secondary-color: #987147;
   left: #{$left};
 }
 
+@mixin svgFillStroke($fill, $stroke) {
+  fill: #{$fill};
+  stroke: #{$stroke};
+}
+
+@mixin paddingMargin($padding: 0 0 0 0, $margin: 0 0 0 0) {
+  padding: #{$padding};
+  margin: #{$margin};
+}
+
+@mixin flex($justify: flex-start, $align: stretch, $dir: row, $wrap: nowrap) {
+  display: flex;
+  flex-wrap: #{$wrap};
+  flex-direction: #{$dir};
+  justify-content: #{$justify};
+  align-items: #{$align};
+}
+
+%white {
+  color: #fff;
+}
+
+%textCenter {
+  text-align: center;
+}
+
+%uppercase {
+  text-transform: uppercase;
+}
+
+%bgBlack {
+  background-color: #000;
+}
+
 * {
-  padding: 0;
-  margin: 0;
+  @include paddingMargin(0, 0);
   box-sizing: border-box;
 }
 
@@ -27,26 +58,21 @@ body {
 }
 
 svg {
-  fill: #fff;
-  stroke: #fff;
+  @include svgFillStroke(#fff, #fff);
 }
 
 .svg-vault,
 svg {
-  width: 0;
-  height: 0;
+  @include boxSize(0, 0);
 }
 
 .banner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  text-align: center;
-  color: #fff;
-  width: 100vw;
-  background-color: #000;
-  height: 3.2rem;
-  padding: 5px;
+  @include boxSize(100vw, 3.2rem);
+  @include position(absolute);
+  @include paddingMargin(0.5rem);
+  @extend %textCenter;
+
+  @extend %bgBlack;
   overflow: hidden;
 
   > div {
@@ -54,25 +80,24 @@ svg {
   }
 
   a {
-    color: #fff;
+    @extend %white;
   }
 }
 
 header {
-  position: fixed;
+  @include position(fixed);
   width: 100%;
   z-index: 1;
 }
 
 nav {
   z-index: 1;
-  color: #fff;
+  @extend %white;
 
   .outer-nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 3.2rem 2rem 0 2rem;
+    @include paddingMargin(0, 3rem 2rem 0 2rem);
+    @include flex(space-between, center);
+
     height: 5.5rem;
 
     .nav-toggle {
@@ -82,7 +107,7 @@ nav {
 
     .site-title {
       text-transform: uppercase;
-      padding-top: 1rem;
+      @include paddingMargin(1rem 0 0 0);
     }
 
     .shopping-bag {
@@ -96,12 +121,9 @@ nav {
   }
 
   .main-nav {
-    position: absolute;
-    top: 0;
-    left: -80vw;
-    width: 80vw;
-    height: 100vh;
-    background-color: #000;
+    @include boxSize(80vw, 100vh);
+    @include position(absolute, 0, -80vw);
+    @extend %bgBlack;
     transition: left 0.5s ease-in-out;
     z-index: 1;
   }
@@ -111,23 +133,17 @@ nav {
   }
 
   .nav-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex(space-between, center);
     height: 8.24vh;
 
     .close {
-      position: relative;
-      padding: 0 0.9rem 0.9rem 1rem;
-      margin: 1rem 0 1rem 1rem;
+      @include position(relative);
+      @include paddingMargin(0 0.9rem 0.9rem 1rem, 1rem 0 1rem 1rem);
     }
 
     .line {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 1.9rem;
-      height: 0.3rem;
+      @include boxSize(1.9rem, 0.3rem);
+      @include position(absolute);
       border-radius: 25rem;
       background-color: white;
     }
@@ -142,8 +158,8 @@ nav {
   }
 
   .nav-container {
-    position: relative;
-    display: flex;
+    @include position(relative);
+    @include flex();
 
     input {
       display: none;
@@ -154,7 +170,6 @@ nav {
       @include position(relative);
       height: 10.8vh;
       overflow: hidden;
-      /* background-size: contain; */
       background-position: center;
     }
 
@@ -167,6 +182,7 @@ nav {
     }
 
     label > .label-font {
+      /*Couldn't @include position due to requiring the bottom property*/
       position: absolute;
       bottom: 0;
       left: 1vw;
@@ -174,7 +190,7 @@ nav {
 
     .womens-nav-img,
     .mens-nav-img {
-      @include boxSize(300px, 100%);
+      @include boxSize(30rem, 100%);
       transition: margin-left 0.5s ease-in-out;
     }
 
@@ -194,7 +210,7 @@ nav {
     }
 
     .womens-nav:checked + label > img {
-      margin-left: -50px;
+      margin-left: -5rem;
     }
 
     .mens-nav:not(:checked) + label > img {
@@ -206,20 +222,17 @@ nav {
     }
 
     .nav-body {
-      /*Top set to 12vh as thats the height of our radio images  */
-      position: absolute;
-      top: 11vh;
-      left: 0;
-      width: 100%;
-      height: calc(100vh - (10.8vh + 8.24vh));
+      @include boxSize(100%, calc(100vh - (10.8vh + 8.24vh)));
+      @include position(absolute, 11vh, 0);
+      @include paddingMargin(0 1.5rem);
       overflow-y: scroll;
       overflow-x: hidden;
-      padding: 0 1.5rem;
       text-transform: uppercase;
 
       a {
+        @extend %white;
+
         text-decoration: none;
-        color: #fff;
         display: block; /*display block to force it to be clickable across how row.*/
         width: 100%;
       }
@@ -229,22 +242,20 @@ nav {
       }
 
       svg:not(.home) {
+        @include boxSize(1.8rem, 1rem);
         position: absolute;
         top: 2.3rem;
         right: 0;
-        width: 18px;
-        height: 10px;
       }
 
       svg {
-        width: 16px;
-        height: 16px;
+        @include boxSize(1.6rem, 1.6rem);
       }
 
       div > ul > li {
-        position: relative;
-        border-bottom: 1px solid rgba($color: #fff, $alpha: 0.2);
-        padding: 1rem 0;
+        @include position(relative);
+        @include paddingMargin(1rem 0);
+        border-bottom: 0.1rem solid rgba($color: #fff, $alpha: 0.2);
       }
 
       li > ul {
@@ -254,7 +265,7 @@ nav {
       }
 
       li:focus-within > ul {
-        max-height: 800px;
+        max-height: 80rem;
         overflow: visible;
       }
 
@@ -304,88 +315,82 @@ nav {
   }
 
   .nav-header-right {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    // $justify: flex-start, $align: stretch, $dir: row, $wrap: nowrap
+    @include flex(center);
     gap: 1rem;
     flex-grow: 1;
     max-width: 15rem;
 
     > svg {
-      width: 2rem;
-      height: 2rem;
+      @include boxSize(2rem, 2rem);
     }
   }
 }
 
 nav.scroll {
-  background-color: #000;
+  @extend %bgBlack;
 }
 
 picture img {
-  width: 100%;
-  height: auto;
+  @include boxSize(100%, auto);
 }
 
 main {
   .landing {
-    background-image: url("https://images.hugoboss.com/is/image/hugobossdm/2022-05-12_Headteaser10?%24large%24&amp;fmt=png-alpha&amp;align=0,-1&amp;fit=crop,1&amp;ts=1656059297397&amp;wid=2048&amp;hei=693");
+    @include position(relative);
+    @include paddingMargin(8rem 0 0 0);
+
+    background-image: url("https://images.hugoboss.com/is/image/hugobossdm/2022-05-12_Headteaser10?%24large%24&fmt=png-alpha&align=0,-1&fit=crop,1&ts=1656059297396&wid=1980&hei=669");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative;
-    top: 0;
-    left: 0;
-    padding-top: 8rem;
     height: 46rem;
 
     > picture {
-      position: absolute;
-      top: 0;
-      left: 0;
+      @include position(absolute);
       z-index: -1;
     }
 
     .container {
-      margin: 1.5rem auto 0 auto;
+      @include paddingMargin(0, 1.5rem auto 0 auto);
       width: 90%;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
+      @include flex(flex-start, center, column);
     }
 
     .search-container {
       width: 100%;
-      position: relative;
+      @include position(relative);
 
       .search-icon {
+        @include boxSize(2rem, 2rem);
+
         position: absolute;
         top: 1.3rem;
         right: 1.2rem;
         stroke: #fff;
-        width: 2rem;
-        height: 2rem;
       }
     }
 
     input[type="search"] {
+      @include boxSize(100%, 4.8rem);
+      @include paddingMargin(2rem 1.5rem);
+
+      @extend %white;
+
       background-color: #ffffff1a;
       opacity: 0.9;
-      border: 1px solid white;
-      width: 100%;
-      height: 4.8rem;
-      padding: 2rem 1.5rem;
-      color: #fff;
+      border: 0.1rem solid white;
     }
 
     .sale-promo {
-      text-align: center;
-      color: #fff;
+      @extend %white;
+      @extend %textCenter;
+
       margin-top: 0.6rem;
 
       h1 {
-        padding: 0;
-        margin: 2rem 0 0 0;
+        @include paddingMargin(0, 2rem 0 0 0);
+
         text-transform: uppercase;
         font-size: 4.3rem;
         line-height: 2rem;
@@ -393,16 +398,14 @@ main {
       }
 
       p {
+        @include paddingMargin(0, 0.5rem 0 2rem 0);
         font-weight: 800;
-        margin: 0.5rem 0 2rem 0;
       }
     }
   }
 
   .sale-buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include flex(flex-start, center, column);
     width: 100%;
 
     > button {
@@ -410,10 +413,11 @@ main {
     }
 
     button {
+      @include paddingMargin(0.8rem 2rem, 2rem 0 0 0);
+
       font-size: 1.6rem;
       font-weight: 300;
       letter-spacing: 0.2rem;
-      padding: 0.8rem 2rem;
       width: fit-content;
       text-transform: uppercase;
       border: none;
@@ -421,34 +425,26 @@ main {
   }
 
   .welcome {
-    position: relative;
-    top: 2rem;
-    left: 0;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include position(relative, 2rem, 0);
+    @extend %white;
+    @include flex(center, center, column);
     height: 60rem;
 
     > picture {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      @include boxSize(100%, 100%);
+      @include position(absolute);
+
       z-index: -1;
 
       source,
       img {
-        width: 100%;
-        height: 100%;
+        @include boxSize(100%, 100%);
       }
     }
 
     > div {
       margin-top: 1rem;
-      text-align: center;
+      @extend %textCenter;
     }
 
     h2 {
@@ -458,31 +454,26 @@ main {
     }
 
     .welcome-buttons {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+      @include flex(space-between, stretch, row);
       width: 100%;
       margin-top: 1.5rem;
     }
 
     .welcome-buttons button {
+      @include paddingMargin(1rem 0.7rem 0.75rem 0.75rem, 0 1.5rem);
       font-size: 1.6rem;
       font-weight: 600;
-      padding: 1rem 0.7rem 0.75rem 0.75rem;
-      margin: 0 1.5rem;
       text-transform: uppercase;
       border: none;
     }
   }
 
   .about-section {
-    position: relative;
-    top: 2rem;
-    left: 0;
+    @include position(relative, 2rem);
     background-color: #eee;
 
     .header-container {
-      padding: 2rem;
+      @include paddingMargin(2rem);
       text-transform: uppercase;
       line-height: 3rem;
 
@@ -493,11 +484,10 @@ main {
     }
 
     .about-container {
+      @include paddingMargin(2.5rem 5rem, 3rem 0 0 0);
       width: 100%;
-      margin-top: 3rem;
       font-weight: 100;
       background-color: #fff;
-      padding: 2.5rem 5rem;
 
       a {
         color: #000;
@@ -507,10 +497,10 @@ main {
   }
 
   .offer-container {
+    @include paddingMargin(2rem 0 0 0, 2rem 0 0 0);
+    @extend %textCenter;
+
     background-color: #eee;
-    padding-top: 2rem;
-    text-align: center;
-    margin-top: 2rem;
 
     img {
       width: 100%;
@@ -530,12 +520,11 @@ main {
     }
 
     button {
-      background-color: #000;
-      padding: 1.5rem 0;
+      @include paddingMargin(1.5rem 0, 0 0 2rem 0);
+      @extend %bgBlack;
       width: 80%;
       border: none;
       color: #eee;
-      margin-bottom: 2rem;
       text-transform: uppercase;
     }
   }
@@ -553,12 +542,14 @@ footer {
   }
 
   nav {
-    padding: 2rem 1rem;
+    @include paddingMargin(2rem 1rem);
+
     transition: background-color 0.5s ease-in-out;
 
     > ul > li {
-      padding: 1rem 0;
-      border-bottom: 1px solid black;
+      @include paddingMargin(1rem 0);
+
+      border-bottom: 0.1rem solid black;
       list-style: none;
       font-weight: 600;
       text-transform: uppercase;
@@ -569,7 +560,7 @@ footer {
         transition: max-height 0.5s ease-in-out;
 
         li > div {
-          padding: 3rem 3rem 1rem 3rem;
+          @include paddingMargin(3rem 3rem 1rem 3rem);
 
           .title {
             color: #666;
@@ -578,9 +569,8 @@ footer {
           }
 
           p svg {
-            width: 16px;
-            height: 16px;
-            fill: #000;
+            @include boxSize(1.6rem, 1.6rem);
+            @include svgFillStroke(#000, none);
           }
         }
       }
@@ -588,24 +578,25 @@ footer {
       label {
         display: inline-block;
         width: 100%;
-        position: relative;
+        @include position(relative);
 
         > svg {
+          @include boxSize(1.4rem, 1.4rem);
+
+          @include svgFillStroke(#000, #000);
+          stroke-width: 0.1rem;
+
           position: absolute;
           top: 0;
           right: 0;
-          width: 14px;
-          height: 14px;
-          stroke: #000;
-          fill: #000;
-          stroke-width: 1px;
+
           transform: rotate(90deg);
           transition: transform 0.5s ease-in-out;
         }
       }
 
       input:checked ~ ul {
-        max-height: 500px;
+        max-height: 50rem;
       }
 
       input:checked + label > svg {
@@ -615,93 +606,84 @@ footer {
 
     .contact {
       .contact-group {
-        padding: 1rem 3rem;
+        @include paddingMargin(1rem 3rem);
+
         font-weight: 100;
       }
     }
 
     .services {
       li {
-        padding: 1rem 3rem;
+        @include paddingMargin(1rem 3rem);
+
         font-weight: 100;
 
         svg {
-          width: 14px;
-          height: 14px;
-          stroke: #000;
-          fill: #000;
-          stroke-width: 1px;
+          @include boxSize(1.4rem, 1.4rem);
+          @include svgFillStroke(#000, #000);
+          stroke-width: 0.1rem;
         }
       }
     }
 
     .company {
       li {
-        padding: 1rem 3rem;
+        @include paddingMargin(1rem 3rem);
+
         font-weight: 100;
 
         svg {
-          width: 14px;
-          height: 14px;
-          stroke: #000;
-          fill: #000;
-          stroke-width: 1px;
+          @include boxSize(1.4rem, 1.4rem);
+          @include svgFillStroke(#000, #000);
+          stroke-width: 0.1rem;
         }
       }
     }
   }
 
   .socials-container {
-    text-align: center;
+    @extend %textCenter;
 
     .social-icons {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
+      @include flex(center, stretch, row);
     }
 
     .icon {
+      @include boxSize(2.4rem, 2.4rem);
+      @include flex(center, center);
       background-color: black;
-      width: 24px;
-      height: 24px;
       margin-right: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     svg {
-      width: 16px;
-      height: 16px;
+      @include boxSize(1.6rem, 1.6rem);
       stroke: #fff;
     }
   }
 
   .app-icons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    @include flex(center, stretch, row);
   }
 
   .apple-app,
   .google-app {
-    width: 12rem;
-    height: 4rem;
+    @include boxSize(12rem, 4rem);
+    @include paddingMargin(0, 1rem 1.5rem 0 0);
     background-image: url("./imgs/appstore-icons.png");
     background-size: cover;
-    margin: 1rem 1.5rem 0 0;
   }
 
   .apple-app {
-    background-position: 0 40px;
+    background-position: 0 4rem;
   }
 
   .google-app {
-    background-position: 0 -5px;
+    background-position: 0 -0.5rem;
   }
 
   .location-nav {
-    text-align: center;
+    @extend %textCenter;
+
     margin-top: 2rem;
     font-weight: 500;
     font-size: 1.8rem;
@@ -712,15 +694,16 @@ footer {
 
   .smallprint-container {
     background-color: #f0f0f0;
-    text-align: center;
+    @extend %textCenter;
+
     font-weight: 700;
     padding-top: 2rem;
   }
 
   .small-print {
     background-color: #f0f0f0;
-    text-align: center;
-    padding: 3rem 0;
+    @extend %textCenter;
+    @include paddingMargin(3rem 0);
   }
 }
 
@@ -730,23 +713,23 @@ footer {
 
 @keyframes banner {
   0% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
 
   40% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
 
   50% {
-    transform: translateY(-27px);
+    transform: translateY(-2.7rem);
   }
 
   90% {
-    transform: translateY(-27px);
+    transform: translateY(-2.7rem);
   }
 
   100% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
 }
 
@@ -757,8 +740,8 @@ footer {
       justify-content: center;
 
       button {
-        margin: 0 1.5rem;
-        font-size: 1rem;
+        @include paddingMargin(1.8rem 2rem, 0 1.5rem);
+        font-size: 1.5rem;
         font-weight: 700;
       }
     }
@@ -767,10 +750,8 @@ footer {
 
 @media screen and (min-width: 512px) {
   .flex-container {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    padding: 0;
+    @include flex(space-between, stretch, row);
+    @include paddingMargin(0);
     font-size: 1.3rem;
 
     .img-container {
@@ -792,15 +773,19 @@ footer {
 
 @media screen and (min-width: 765px) {
   nav {
+    .main-nav {
+      width: 40vw;
+    }
+
     .outer-nav-container {
       .site-title {
         margin-left: 1.5rem;
       }
 
       .search-container {
+        @include position(relative);
+        @include paddingMargin(0, 0 1.5rem 0 auto);
         display: initial;
-        position: relative;
-        margin: 0 1.5rem 0 auto;
 
         .search-icon {
           position: absolute;
@@ -813,12 +798,13 @@ footer {
       }
 
       input[type="search"] {
+        @include paddingMargin(2rem 1.5rem);
+
         display: initial;
         background-color: #ffffff1a;
         border: none;
-        width: 200px;
-        height: 36px;
-        padding: 2rem 1.5rem;
+        width: 20rem;
+        height: 3.6rem;
         color: #fff;
       }
     }
@@ -838,12 +824,12 @@ footer {
     .about-section {
       .header-container {
         width: 95%;
-        margin: auto;
+        @include paddingMargin(2rem 2.6rem, auto);
       }
 
       .about-container {
         width: 90%;
-        margin: auto;
+        @include paddingMargin(3.5rem, auto);
       }
     }
   }
@@ -851,20 +837,17 @@ footer {
   footer {
     nav {
       > ul {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+        @include flex(space-around, stretch, row, wrap);
 
         .card {
-          min-height: 450px;
+          min-height: 45rem;
         }
 
         > li {
-          max-width: 300px;
+          @include paddingMargin(0, 0 0.3rem 10rem 0.3rem);
+          max-width: 30rem;
           border: none;
-          margin: 0 0.3rem 10rem 0.3rem;
-          height: 225px;
+          height: 22.5rem;
         }
 
         li > ul {
@@ -873,7 +856,7 @@ footer {
           overflow: visible;
 
           > li {
-            position: relative;
+            @include position(relative);
           }
 
           .flex-container {
@@ -900,14 +883,63 @@ footer {
         }
 
         .contact .contact-group {
-          padding: 0;
+          @include paddingMargin(0);
         }
 
         .services li,
         .company li {
-          padding: 0;
+          @include paddingMargin(0);
         }
+      }
+    }
+
+    .large-flex {
+      @include paddingMargin(0, auto);
+      @include flex(space-between, stretch, row);
+      width: 95%;
+    }
+
+    .location-nav {
+      @include flex(center, stretch, row);
+
+      p {
+        font-size: 1.2rem;
+        margin-right: 1rem;
+      }
+    }
+
+    .smallprint-container {
+      @include flex(center, stretch, row, wrap);
+      margin-top: 2rem;
+
+      p:not(:last-of-type):after {
+        @include paddingMargin(0 1rem);
+        content: "|";
       }
     }
   }
 }
+
+// @media screen and (min-width: "1280px") {
+//   .outer-nav-container {
+//     > svg:first-of-type {
+//       display: none;
+//     }
+//   }
+
+//   nav {
+//     .nav-header {
+//       display: none;
+//     }
+
+//     .main-nav {
+//       left: 0;
+//       top: 0;
+//     }
+
+//     .nav-container label:first-of-type,
+//     .nav-container label:last-of-type {
+//       background-image: none;
+//     }
+//   }
+// }

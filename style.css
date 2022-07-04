@@ -1,3 +1,15 @@
+.banner a, nav, nav .nav-container .nav-body a, main .landing input[type="search"], main .landing .sale-promo, main .welcome {
+  color: #fff;
+}
+
+.banner, main .landing .sale-promo, main .welcome > div, main .offer-container, footer .socials-container, footer .location-nav, footer .smallprint-container, footer .small-print {
+  text-align: center;
+}
+
+.banner, nav .main-nav, nav.scroll, main .offer-container button {
+  background-color: #000;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -26,15 +38,13 @@ svg {
 }
 
 .banner {
+  width: 100vw;
+  height: 3.2rem;
   position: absolute;
   top: 0;
   left: 0;
-  text-align: center;
-  color: #fff;
-  width: 100vw;
-  background-color: #000;
-  height: 3.2rem;
-  padding: 5px;
+  padding: 0.5rem;
+  margin: 0 0 0 0;
   overflow: hidden;
 }
 
@@ -43,32 +53,36 @@ svg {
           animation: banner 10s infinite;
 }
 
-.banner a {
-  color: #fff;
-}
-
 header {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   z-index: 1;
 }
 
 nav {
   z-index: 1;
-  color: #fff;
 }
 
 nav .outer-nav-container {
+  padding: 0;
+  margin: 3rem 2rem 0 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 3.2rem 2rem 0 2rem;
   height: 5.5rem;
 }
 
@@ -79,7 +93,8 @@ nav .outer-nav-container .nav-toggle {
 
 nav .outer-nav-container .site-title {
   text-transform: uppercase;
-  padding-top: 1rem;
+  padding: 1rem 0 0 0;
+  margin: 0 0 0 0;
 }
 
 nav .outer-nav-container .shopping-bag {
@@ -92,12 +107,11 @@ nav .outer-nav-container .search-container {
 }
 
 nav .main-nav {
+  width: 80vw;
+  height: 100vh;
   position: absolute;
   top: 0;
   left: -80vw;
-  width: 80vw;
-  height: 100vh;
-  background-color: #000;
   -webkit-transition: left 0.5s ease-in-out;
   transition: left 0.5s ease-in-out;
   z-index: 1;
@@ -111,6 +125,12 @@ nav .nav-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -122,16 +142,18 @@ nav .nav-header {
 
 nav .nav-header .close {
   position: relative;
+  top: 0;
+  left: 0;
   padding: 0 0.9rem 0.9rem 1rem;
   margin: 1rem 0 1rem 1rem;
 }
 
 nav .nav-header .line {
+  width: 1.9rem;
+  height: 0.3rem;
   position: absolute;
   top: 0;
   left: 0;
-  width: 1.9rem;
-  height: 0.3rem;
   border-radius: 25rem;
   background-color: white;
 }
@@ -148,9 +170,23 @@ nav .nav-header .line:last-of-type {
 
 nav .nav-container {
   position: relative;
+  top: 0;
+  left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
 }
 
 nav .nav-container input {
@@ -165,7 +201,6 @@ nav .nav-container label {
   left: 0;
   height: 10.8vh;
   overflow: hidden;
-  /* background-size: contain; */
   background-position: center;
 }
 
@@ -178,6 +213,7 @@ nav .nav-container label:last-of-type {
 }
 
 nav .nav-container label > .label-font {
+  /*Couldn't @include position due to requiring the bottom property*/
   position: absolute;
   bottom: 0;
   left: 1vw;
@@ -185,7 +221,7 @@ nav .nav-container label > .label-font {
 
 nav .nav-container .womens-nav-img,
 nav .nav-container .mens-nav-img {
-  width: 300px;
+  width: 30rem;
   height: 100%;
   -webkit-transition: margin-left 0.5s ease-in-out;
   transition: margin-left 0.5s ease-in-out;
@@ -208,7 +244,7 @@ nav .nav-container input:not(:checked) + label {
 }
 
 nav .nav-container .womens-nav:checked + label > img {
-  margin-left: -50px;
+  margin-left: -5rem;
 }
 
 nav .nav-container .mens-nav:not(:checked) + label > img {
@@ -220,21 +256,20 @@ nav .nav-container input:checked + label > .label-font {
 }
 
 nav .nav-container .nav-body {
-  /*Top set to 12vh as thats the height of our radio images  */
+  width: 100%;
+  height: calc(100vh - (10.8vh + 8.24vh));
   position: absolute;
   top: 11vh;
   left: 0;
-  width: 100%;
-  height: calc(100vh - (10.8vh + 8.24vh));
+  padding: 0 1.5rem;
+  margin: 0 0 0 0;
   overflow-y: scroll;
   overflow-x: hidden;
-  padding: 0 1.5rem;
   text-transform: uppercase;
 }
 
 nav .nav-container .nav-body a {
   text-decoration: none;
-  color: #fff;
   display: block;
   /*display block to force it to be clickable across how row.*/
   width: 100%;
@@ -245,22 +280,25 @@ nav .nav-container .nav-body ul {
 }
 
 nav .nav-container .nav-body svg:not(.home) {
+  width: 1.8rem;
+  height: 1rem;
   position: absolute;
   top: 2.3rem;
   right: 0;
-  width: 18px;
-  height: 10px;
 }
 
 nav .nav-container .nav-body svg {
-  width: 16px;
-  height: 16px;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 nav .nav-container .nav-body div > ul > li {
   position: relative;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  top: 0;
+  left: 0;
   padding: 1rem 0;
+  margin: 0 0 0 0;
+  border-bottom: 0.1rem solid rgba(255, 255, 255, 0.2);
 }
 
 nav .nav-container .nav-body li > ul {
@@ -271,7 +309,7 @@ nav .nav-container .nav-body li > ul {
 }
 
 nav .nav-container .nav-body li:focus-within > ul {
-  max-height: 800px;
+  max-height: 80rem;
   overflow: visible;
 }
 
@@ -327,6 +365,8 @@ nav .nav-header-right {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -334,6 +374,9 @@ nav .nav-header-right {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   gap: 1rem;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -346,24 +389,21 @@ nav .nav-header-right > svg {
   height: 2rem;
 }
 
-nav.scroll {
-  background-color: #000;
-}
-
 picture img {
   width: 100%;
   height: auto;
 }
 
 main .landing {
-  background-image: url("https://images.hugoboss.com/is/image/hugobossdm/2022-05-12_Headteaser10?%24large%24&amp;fmt=png-alpha&amp;align=0,-1&amp;fit=crop,1&amp;ts=1656059297397&amp;wid=2048&amp;hei=693");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   position: relative;
   top: 0;
   left: 0;
-  padding-top: 8rem;
+  padding: 8rem 0 0 0;
+  margin: 0 0 0 0;
+  background-image: url("https://images.hugoboss.com/is/image/hugobossdm/2022-05-12_Headteaser10?%24large%24&fmt=png-alpha&align=0,-1&fit=crop,1&ts=1656059297396&wid=1980&hei=669");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 46rem;
 }
 
@@ -375,47 +415,53 @@ main .landing > picture {
 }
 
 main .landing .container {
+  padding: 0;
   margin: 1.5rem auto 0 auto;
   width: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 main .landing .search-container {
   width: 100%;
   position: relative;
+  top: 0;
+  left: 0;
 }
 
 main .landing .search-container .search-icon {
+  width: 2rem;
+  height: 2rem;
   position: absolute;
   top: 1.3rem;
   right: 1.2rem;
   stroke: #fff;
-  width: 2rem;
-  height: 2rem;
 }
 
 main .landing input[type="search"] {
-  background-color: #ffffff1a;
-  opacity: 0.9;
-  border: 1px solid white;
   width: 100%;
   height: 4.8rem;
   padding: 2rem 1.5rem;
-  color: #fff;
+  margin: 0 0 0 0;
+  background-color: #ffffff1a;
+  opacity: 0.9;
+  border: 0.1rem solid white;
 }
 
 main .landing .sale-promo {
-  text-align: center;
-  color: #fff;
   margin-top: 0.6rem;
 }
 
@@ -429,18 +475,24 @@ main .landing .sale-promo h1 {
 }
 
 main .landing .sale-promo p {
-  font-weight: 800;
+  padding: 0;
   margin: 0.5rem 0 2rem 0;
+  font-weight: 800;
 }
 
 main .sale-buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -452,10 +504,11 @@ main .sale-buttons > button {
 }
 
 main .sale-buttons button {
+  padding: 0.8rem 2rem;
+  margin: 2rem 0 0 0;
   font-size: 1.6rem;
   font-weight: 300;
   letter-spacing: 0.2rem;
-  padding: 0.8rem 2rem;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -467,10 +520,11 @@ main .welcome {
   position: relative;
   top: 2rem;
   left: 0;
-  color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -485,11 +539,11 @@ main .welcome {
 }
 
 main .welcome > picture {
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
   z-index: -1;
 }
 
@@ -501,7 +555,6 @@ main .welcome > picture img {
 
 main .welcome > div {
   margin-top: 1rem;
-  text-align: center;
 }
 
 main .welcome h2 {
@@ -514,6 +567,8 @@ main .welcome .welcome-buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -521,15 +576,18 @@ main .welcome .welcome-buttons {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   width: 100%;
   margin-top: 1.5rem;
 }
 
 main .welcome .welcome-buttons button {
-  font-size: 1.6rem;
-  font-weight: 600;
   padding: 1rem 0.7rem 0.75rem 0.75rem;
   margin: 0 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
   text-transform: uppercase;
   border: none;
 }
@@ -543,6 +601,7 @@ main .about-section {
 
 main .about-section .header-container {
   padding: 2rem;
+  margin: 0 0 0 0;
   text-transform: uppercase;
   line-height: 3rem;
 }
@@ -553,11 +612,11 @@ main .about-section .header-container h2 {
 }
 
 main .about-section .about-container {
+  padding: 2.5rem 5rem;
+  margin: 3rem 0 0 0;
   width: 100%;
-  margin-top: 3rem;
   font-weight: 100;
   background-color: #fff;
-  padding: 2.5rem 5rem;
 }
 
 main .about-section .about-container a {
@@ -566,10 +625,9 @@ main .about-section .about-container a {
 }
 
 main .offer-container {
+  padding: 2rem 0 0 0;
+  margin: 2rem 0 0 0;
   background-color: #eee;
-  padding-top: 2rem;
-  text-align: center;
-  margin-top: 2rem;
 }
 
 main .offer-container img {
@@ -590,12 +648,11 @@ main .offer-container p {
 }
 
 main .offer-container button {
-  background-color: #000;
   padding: 1.5rem 0;
+  margin: 0 0 2rem 0;
   width: 80%;
   border: none;
   color: #eee;
-  margin-bottom: 2rem;
   text-transform: uppercase;
 }
 
@@ -613,13 +670,15 @@ footer ul li {
 
 footer nav {
   padding: 2rem 1rem;
+  margin: 0 0 0 0;
   -webkit-transition: background-color 0.5s ease-in-out;
   transition: background-color 0.5s ease-in-out;
 }
 
 footer nav > ul > li {
   padding: 1rem 0;
-  border-bottom: 1px solid black;
+  margin: 0 0 0 0;
+  border-bottom: 0.1rem solid black;
   list-style: none;
   font-weight: 600;
   text-transform: uppercase;
@@ -634,6 +693,7 @@ footer nav > ul > li > ul {
 
 footer nav > ul > li > ul li > div {
   padding: 3rem 3rem 1rem 3rem;
+  margin: 0 0 0 0;
 }
 
 footer nav > ul > li > ul li > div .title {
@@ -643,26 +703,29 @@ footer nav > ul > li > ul li > div .title {
 }
 
 footer nav > ul > li > ul li > div p svg {
-  width: 16px;
-  height: 16px;
+  width: 1.6rem;
+  height: 1.6rem;
   fill: #000;
+  stroke: none;
 }
 
 footer nav > ul > li label {
   display: inline-block;
   width: 100%;
   position: relative;
+  top: 0;
+  left: 0;
 }
 
 footer nav > ul > li label > svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: #000;
+  stroke: #000;
+  stroke-width: 0.1rem;
   position: absolute;
   top: 0;
   right: 0;
-  width: 14px;
-  height: 14px;
-  stroke: #000;
-  fill: #000;
-  stroke-width: 1px;
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
   -webkit-transition: -webkit-transform 0.5s ease-in-out;
@@ -672,7 +735,7 @@ footer nav > ul > li label > svg {
 }
 
 footer nav > ul > li input:checked ~ ul {
-  max-height: 500px;
+  max-height: 50rem;
 }
 
 footer nav > ul > li input:checked + label > svg {
@@ -682,43 +745,44 @@ footer nav > ul > li input:checked + label > svg {
 
 footer nav .contact .contact-group {
   padding: 1rem 3rem;
+  margin: 0 0 0 0;
   font-weight: 100;
 }
 
 footer nav .services li {
   padding: 1rem 3rem;
+  margin: 0 0 0 0;
   font-weight: 100;
 }
 
 footer nav .services li svg {
-  width: 14px;
-  height: 14px;
-  stroke: #000;
+  width: 1.4rem;
+  height: 1.4rem;
   fill: #000;
-  stroke-width: 1px;
+  stroke: #000;
+  stroke-width: 0.1rem;
 }
 
 footer nav .company li {
   padding: 1rem 3rem;
+  margin: 0 0 0 0;
   font-weight: 100;
 }
 
 footer nav .company li svg {
-  width: 14px;
-  height: 14px;
-  stroke: #000;
+  width: 1.4rem;
+  height: 1.4rem;
   fill: #000;
-  stroke-width: 1px;
-}
-
-footer .socials-container {
-  text-align: center;
+  stroke: #000;
+  stroke-width: 0.1rem;
 }
 
 footer .socials-container .social-icons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -726,27 +790,36 @@ footer .socials-container .social-icons {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
 }
 
 footer .socials-container .icon {
-  background-color: black;
-  width: 24px;
-  height: 24px;
-  margin-right: 1rem;
+  width: 2.4rem;
+  height: 2.4rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: black;
+  margin-right: 1rem;
 }
 
 footer .socials-container svg {
-  width: 16px;
-  height: 16px;
+  width: 1.6rem;
+  height: 1.6rem;
   stroke: #fff;
 }
 
@@ -754,6 +827,8 @@ footer .app-icons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -761,27 +836,30 @@ footer .app-icons {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
 }
 
 footer .apple-app,
 footer .google-app {
   width: 12rem;
   height: 4rem;
+  padding: 0;
+  margin: 1rem 1.5rem 0 0;
   background-image: url("./imgs/appstore-icons.png");
   background-size: cover;
-  margin: 1rem 1.5rem 0 0;
 }
 
 footer .apple-app {
-  background-position: 0 40px;
+  background-position: 0 4rem;
 }
 
 footer .google-app {
-  background-position: 0 -5px;
+  background-position: 0 -0.5rem;
 }
 
 footer .location-nav {
-  text-align: center;
   margin-top: 2rem;
   font-weight: 500;
   font-size: 1.8rem;
@@ -792,15 +870,14 @@ footer .location-nav {
 
 footer .smallprint-container {
   background-color: #f0f0f0;
-  text-align: center;
   font-weight: 700;
   padding-top: 2rem;
 }
 
 footer .small-print {
   background-color: #f0f0f0;
-  text-align: center;
   padding: 3rem 0;
+  margin: 0 0 0 0;
 }
 
 .location-container {
@@ -809,47 +886,47 @@ footer .small-print {
 
 @-webkit-keyframes banner {
   0% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
   40% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
   50% {
-    -webkit-transform: translateY(-27px);
-            transform: translateY(-27px);
+    -webkit-transform: translateY(-2.7rem);
+            transform: translateY(-2.7rem);
   }
   90% {
-    -webkit-transform: translateY(-27px);
-            transform: translateY(-27px);
+    -webkit-transform: translateY(-2.7rem);
+            transform: translateY(-2.7rem);
   }
   100% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
 }
 
 @keyframes banner {
   0% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
   40% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
   50% {
-    -webkit-transform: translateY(-27px);
-            transform: translateY(-27px);
+    -webkit-transform: translateY(-2.7rem);
+            transform: translateY(-2.7rem);
   }
   90% {
-    -webkit-transform: translateY(-27px);
-            transform: translateY(-27px);
+    -webkit-transform: translateY(-2.7rem);
+            transform: translateY(-2.7rem);
   }
   100% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
 }
 
@@ -864,8 +941,9 @@ footer .small-print {
             justify-content: center;
   }
   main .sale-buttons button {
+    padding: 1.8rem 2rem;
     margin: 0 1.5rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 700;
   }
 }
@@ -875,14 +953,20 @@ footer .small-print {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
     padding: 0;
+    margin: 0 0 0 0;
     font-size: 1.3rem;
   }
   .flex-container .img-container {
@@ -900,13 +984,19 @@ footer .small-print {
 }
 
 @media screen and (min-width: 765px) {
+  nav .main-nav {
+    width: 40vw;
+  }
   nav .outer-nav-container .site-title {
     margin-left: 1.5rem;
   }
   nav .outer-nav-container .search-container {
-    display: initial;
     position: relative;
+    top: 0;
+    left: 0;
+    padding: 0;
     margin: 0 1.5rem 0 auto;
+    display: initial;
   }
   nav .outer-nav-container .search-container .search-icon {
     position: absolute;
@@ -917,12 +1007,13 @@ footer .small-print {
     height: 2rem;
   }
   nav .outer-nav-container input[type="search"] {
+    padding: 2rem 1.5rem;
+    margin: 0 0 0 0;
     display: initial;
     background-color: #ffffff1a;
     border: none;
-    width: 200px;
-    height: 36px;
-    padding: 2rem 1.5rem;
+    width: 20rem;
+    height: 3.6rem;
     color: #fff;
   }
   .landing input[type="search"] {
@@ -933,34 +1024,39 @@ footer .small-print {
   }
   main .about-section .header-container {
     width: 95%;
+    padding: 2rem 2.6rem;
     margin: auto;
   }
   main .about-section .about-container {
     width: 90%;
+    padding: 3.5rem;
     margin: auto;
   }
   footer nav > ul {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
   }
   footer nav > ul .card {
-    min-height: 450px;
+    min-height: 45rem;
   }
   footer nav > ul > li {
-    max-width: 300px;
-    border: none;
+    padding: 0;
     margin: 0 0.3rem 10rem 0.3rem;
-    height: 225px;
+    max-width: 30rem;
+    border: none;
+    height: 22.5rem;
   }
   footer nav > ul li > ul {
     list-style: none;
@@ -971,6 +1067,8 @@ footer .small-print {
   }
   footer nav > ul li > ul > li {
     position: relative;
+    top: 0;
+    left: 0;
   }
   footer nav > ul li > ul .flex-container {
     -webkit-box-orient: vertical;
@@ -994,10 +1092,76 @@ footer .small-print {
   }
   footer nav > ul .contact .contact-group {
     padding: 0;
+    margin: 0 0 0 0;
   }
   footer nav > ul .services li,
   footer nav > ul .company li {
     padding: 0;
+    margin: 0 0 0 0;
+  }
+  footer .large-flex {
+    padding: 0;
+    margin: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    width: 95%;
+  }
+  footer .location-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+  }
+  footer .location-nav p {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+  }
+  footer .smallprint-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    margin-top: 2rem;
+  }
+  footer .smallprint-container p:not(:last-of-type):after {
+    padding: 0 1rem;
+    margin: 0 0 0 0;
+    content: "|";
   }
 }
 /*# sourceMappingURL=style.css.map */
