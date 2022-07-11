@@ -920,26 +920,58 @@ footer {
   }
 }
 
-// @media screen and (min-width: "1280px") {
-//   .outer-nav-container {
-//     > svg:first-of-type {
-//       display: none;
-//     }
-//   }
+@media screen and (min-width: "1280px") {
+  .outer-nav-container {
+    > svg:first-of-type {
+      display: none;
+    }
+  }
 
-//   nav {
-//     .nav-header {
-//       display: none;
-//     }
+  nav {
+    /*? This will need changing to hide certain elements and move svg to where required.*/
+    .nav-header {
+      display: none;
+    }
 
-//     .main-nav {
-//       left: 0;
-//       top: 0;
-//     }
+    .main-nav {
+      width: 100%;
+      height: 12vh;
+      overflow: hidden;
+      z-index: -1;
+      left: 0;
+      top: 0;
+    }
 
-//     .nav-container label:first-of-type,
-//     .nav-container label:last-of-type {
-//       background-image: none;
-//     }
-//   }
-// }
+    .nav-body {
+      width: 100%;
+    }
+
+    .nav-container {
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      width: 50%;
+
+      label:first-of-type,
+      label:last-of-type {
+        width: 50%;
+        background-image: none;
+      }
+
+      label:first-of-type {
+        margin-left: auto;
+      }
+
+      label:last-of-type {
+        margin-right: auto;
+      }
+
+      input:checked + label,
+      input:not(:checked) + label {
+        /*Not sure why !important is required here*/
+        transition: none !important;
+        width: 20%;
+      }
+    }
+  }
+}
